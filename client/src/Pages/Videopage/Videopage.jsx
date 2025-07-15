@@ -32,7 +32,7 @@ const Videopage = () => {
       handlehistory();
     }
     handleviews();
-  }, [handleviews, handlehistory]);
+  }, [handleviews, handlehistory],[currentuser]);
 
   return (
     <>

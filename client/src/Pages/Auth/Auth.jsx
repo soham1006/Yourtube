@@ -1,4 +1,4 @@
-import React ,{ useEffect } from 'react'
+import React  from 'react'
 import { BiLogOut } from 'react-icons/bi'
 import { Link } from 'react-router-dom'
 import { googleLogout } from '@react-oauth/google';

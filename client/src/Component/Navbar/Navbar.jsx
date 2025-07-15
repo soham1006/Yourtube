@@ -56,7 +56,7 @@ const Navbar = ({ toggledrawer, seteditcreatechanelbtn }) => {
                 })
                     .then((res) => {
                         setprofile(res.data)
-                        successlogin()
+                        successlogin(),[successlogin]
                         // console.log(res.data)
                     })
 
@@ -78,7 +78,7 @@ const Navbar = ({ toggledrawer, seteditcreatechanelbtn }) => {
             }
         }
         dispatch(setcurrentuser(JSON.parse(localStorage.getItem("Profile"))))
-  },[currentuser?.token,dispatch]
+  },[currentuser?.token,dispatch], [logout]
 )
     return (
         <>
