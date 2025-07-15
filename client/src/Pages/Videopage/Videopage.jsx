@@ -13,26 +13,19 @@ const Videopage = () => {
   const { vid } = useParams(); 
   const dispatch = useDispatch();
   const vids = useSelector((state) => state.videoreducer);
-  const vv = vids?.data.filter((q) => q._id === vid)[0];
+  const vv = vids?.data.find((q) => q._id === vid);
   const currentuser = useSelector(state => state.currentuserreducer);
 
-  const handleviews = () => {
-    dispatch(viewvideo({ id: vid }));
-  };
-
-  const handlehistory = () => {
-    dispatch(addtohistory({
-      videoid: vid,
-      viewer: currentuser?.result._id,
-    }));
-  };
-
   useEffect(() => {
+    dispatch(viewvideo({ id: vid }));
+
     if (currentuser) {
-      handlehistory();
+      dispatch(addtohistory({
+        videoid: vid,
+        viewer: currentuser?.result._id,
+      }));
     }
-    handleviews();
-  }, [handleviews, handlehistory],[currentuser]);
+  }, [dispatch, vid, currentuser]);
 
   return (
     <>
@@ -73,7 +66,6 @@ const Videopage = () => {
         </div>
       </div>
 
-      {/* ✅ Chat Room Component */}
       <ChatRoom roomId={vid} />
     </>
   );
