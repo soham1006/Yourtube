@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import logo from "./logo.ico"
 import "./Navbar.css"
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, generatePath } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { RiVideoAddLine } from "react-icons/ri"
 import { IoMdNotificationsOutline } from "react-icons/io"
 import { BiUserCircle } from "react-icons/bi"

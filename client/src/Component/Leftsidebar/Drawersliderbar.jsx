@@ -27,7 +27,7 @@ const Drawersliderbar = ({ toggledraw, toggledrawersidebar }) => {
 
           <div className="icon_sidebar_div">
             <div className="icon_sidebar_inner">
-              <img src={shorts} width={22} className='icon_sidebar' style={{ margin: "auto 0.7rem" }} />
+              <img src={shorts} width={22} className='icon_sidebar' alt="" style={{ margin: "auto 0.7rem" }} />
               <div className="text_sidebar_icon">Shorts</div>
             </div>
           </div>
