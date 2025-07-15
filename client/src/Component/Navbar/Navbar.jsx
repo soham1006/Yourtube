@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './Navbar.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -21,12 +21,12 @@ const Navbar = ({ toggledrawer, seteditcreatechanelbtn }) => {
 
   const currentuser = useSelector((state) => state.currentuserreducer);
 
-  const successlogin = () => {
+  const successlogin = useCallback(() => {
     if (profile.email) {
       dispatch(login({ email: profile.email }));
       console.log(profile.email);
     }
-  };
+  }, [dispatch, profile.email]);
 
   const google_login = useGoogleLogin({
     onSuccess: (tokenResponse) => setuser(tokenResponse),
@@ -50,13 +50,13 @@ const Navbar = ({ toggledrawer, seteditcreatechanelbtn }) => {
           successlogin();
         });
     }
-  }, [user]);
+  }, [user, successlogin]);
 
-  const logout = () => {
+  const logout = useCallback(() => {
     dispatch(setcurrentuser(null));
     googleLogout();
     localStorage.clear();
-  };
+  }, [dispatch]);
 
   useEffect(() => {
     const token = currentuser?.token;
@@ -79,7 +79,7 @@ const Navbar = ({ toggledrawer, seteditcreatechanelbtn }) => {
             <p></p>
           </div>
           <Link to={'/'} className="logo_div_Navbar">
-            {/* If you need the logo image, re-enable this and fix the import */}
+            {/* Add your logo image if needed */}
             {/* <img src={logo} alt="YourTube logo" /> */}
             <p className="logo_title_navbar">Your-Tube</p>
           </Link>
